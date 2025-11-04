@@ -1,78 +1,69 @@
-// 1. Testu-Aldatzailea
-function aldatuTestua() {
-    const p = document.getElementById("testu_aldagarria");
-    p.textContent = "Aratz tonto";
-}
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.ariketa</title>
+    </head>
+<body>
 
-// 2. Kolore Txandakatzailea (Estiloak JS-tik aplikatuz)
-function aldatuKolorea() {
-
- // 1. HTML elementua lortu (h1-a, gure adibidean)
-    const p = document.getElementById("kolore_aldagarria");
+    <h1>JavaScript Funtzio ezberdinak</h1>
     
-    // 2. Elementuaren uneko kolorea egiaztatu
-    const unekoKolorea = p.style.color;
+    <section>
+        <h2>1. Testu-Aldatzailea</h2>
+        <p id="testu_aldagarria">Hau da hasierako testua</p>
+        <button onclick="aldatuTestua()">Testua aldatu</button>
+    </section>
 
-    // 3. Logika aplikatu (Baldintzapeko egitura: if...else)
-    if (unekoKolorea === "blue") {
-        p.style.color = "black"; // edo "black", atzeko planoaren arabera
-    } else {
-        p.style.color = "blue";
-    }
-}
+    <section>
+        <h2>2. Kolore Txandakatzailea</h2>
+        <p id="kolore_aldagarria">Kolorea aldatuko dut</p>
+        <button onclick="aldatuKolorea()">Kolorea txandakatu</button>
+    </section>
 
-// 3. Elementuen Ezkutagailua (display propietatea aldatuz)
-function txandakatuEzkutatzea() {
- const p = document.getElementById("ezkutatu_hau");
-    p.textContent = " ";
-}
+    <section>
+        <h2>3. Elementuen Ezkutagailua</h2>
+        <p id="ezkutatu_hau">Ezkutatu edo agertu beharreko paragrafoa</p>
+        <button onclick="txandakatuEzkutatzea()">Txandakatu</button>
+    </section>
 
-// 4. Batuketa Kalkulagailua
-function batuketaEgin() {
-const z1 = Number(document.getElementById("zenbaki1").value);
-  const z2 = Number(document.getElementById("zenbaki2").value);
-  const emaitza = z1 + z2;
-  document.getElementById("emaitza4").innerText = emaitza;
-}
+    <section>
+        <h2>4. Batuketa Kalkulagailua</h2>
+        <input type="number" id="zenbaki1" placeholder="Zenbakia 1"> +
+        <input type="number" id="zenbaki2" placeholder="Zenbakia 2">
+        <button onclick="batuketaEgin()">Batu</button>
+        <p>Emaitza: <span id="emaitza4"></span></p>
+    </section>
+    
+    <section>
+        <h2>5. Zerrenda Dinamikoa</h2>
+        <input type="text" id="elementu_berria" placeholder="Elementu berria idatzi">
+        <button onclick="gehituElementua()">Gehitu</button>
+        <ul id="zerrenda_dinamikoa"></ul>
+    </section>
 
-// 5. Testu-Gehitzailea (Elementu berriak sortzea)
-function gehituElementua() {
-const testua = document.getElementById("elementu_berria").value.trim();
+    <section>
+        <h2>6. Klik Kontagailua</h2>
+        <p>Klika kopurua: <span id="kontagailu_emaitza">0</span></p>
+        <button onclick="kontatuKlik()">Klikatu</button>
+    </section>
 
- if (testua === "") return;
+    <section>
+        <h2>7. Zenbaki Asmatzearen Jokoa (1-5)</h2>
+        <input type="number" id="asmatutako_zenbakia" placeholder="Zure zenbakia (1-5)">
+        <button onclick="konprobatuZenbakia()">Konprobatu</button>
+        <p id="joko_emaitza"></p>
+    </section>
+    
+    <section>
+        <h2>8. Atzeko Planoaren Kolore-Aldatzailea</h2>
+        <button onclick="aldatuAtzekoPlanoarenKolorea()">Aldatu</button>
+    </section>
 
-    const li = document.createElement("li");
-    li.textContent = testua;
-    document.getElementById("zerrenda_dinamikoa").appendChild(li);
-    document.getElementById("elementu_berria").value = "";
-}
-
-// 6. Kontagailua (aldagai globalak erabiliz)
-// Oharra: klikKopurua HTML amaierako <script> blokean hasieratuta dago
-function kontatuKlik() {
-    klikKopurua = klikKopurua + 1; // Edo klikKopurua++
-    document.getElementById("kontagailu_emaitza").textContent = klikKopurua;
-}
-
-
-// 7. Zenbaki Asmatzearen Jokoa
-// Oharra: zenbakiSekretua HTML amaierako <script> blokean hasieratuta dago
-function konprobatuZenbakia() {
-    const sarrera = parseInt(document.getElementById("asmatutako_zenbakia").value);
-    const emaitza = document.getElementById("joko_emaitza");
-    if (sarrera === zenbakiSekretua) {
-        emaitza.textContent = "Zorionak! Asmatu duzu!";
-        emaitza.style.color = "green";
-        zenbakiSekretua = Math.floor(Math.random() * 5) + 1;
-    } else {
-        emaitza.textContent = "OSO TXARRA ZARA EHH!!";
-        emaitza.style.color = "red";
-    }
-}
-
-
-// 8. Atzeko Planoaren Kolore-Aldatzailea (Random)
-function aldatuAtzekoPlanoarenKolorea() {
- const randomKolorea = "#" + Math.floor(Math.random() * 16757215).toString(16).padStart(6, "0");
-  document.body.style.backgroundColor = randomKolorea;
-}
+    <script src="script.js"></script>
+    <script>
+        // 6. eta 7. ariketetarako aldagai globalak.
+        let klikKopurua = 0;
+        let zenbakiSekretua = Math.floor(Math.random() * 5) + 1;
+    </script>
+</body>
+</html>
